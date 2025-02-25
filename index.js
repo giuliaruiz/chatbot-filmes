@@ -151,16 +151,160 @@ function atualizarConversa(id, resposta) {
     conversas[id].respostas.add(resposta);
 }
 
-// Função para extrair um pedido do tipo "3 filmes de ação"
-// O regex procura o padrão em qualquer parte da mensagem.
+// Mapeamento de números escritos por extenso para seus equivalentes numéricos
+const numerosPorExtenso = {
+  "um": 1,
+  "uma": 1,
+  "dois": 2,
+  "duas": 2,
+  "três": 3,
+  "quatro": 4,
+  "cinco": 5,
+  "seis": 6,
+  "sete": 7,
+  "oito": 8,
+  "nove": 9,
+  "dez": 10,
+  "onze": 11,
+  "doze": 12,
+  "treze": 13,
+  "quatorze": 14,
+  "quinze": 15,
+  "dezesseis": 16,
+  "dezessete": 17,
+  "dezoito": 18,
+  "dezenove": 19,
+  "vinte": 20,
+  "vinte e um": 21,
+  "vinte e dois": 22,
+  "vinte e três": 23,
+  "vinte e quatro": 24,
+  "vinte e cinco": 25,
+  "vinte e seis": 26,
+  "vinte e sete": 27,
+  "vinte e oito": 28,
+  "vinte e nove": 29,
+  "trinta": 30,
+  "trinta e um": 31,
+  "trinta e dois": 32,
+  "trinta e três": 33,
+  "trinta e quatro": 34,
+  "trinta e cinco": 35,
+  "trinta e seis": 36,
+  "trinta e sete": 37,
+  "trinta e oito": 38,
+  "trinta e nove": 39,
+  "quarenta": 40,
+  "quarenta e um": 41,
+  "quarenta e dois": 42,
+  "quarenta e três": 43,
+  "quarenta e quatro": 44,
+  "quarenta e cinco": 45,
+  "quarenta e seis": 46,
+  "quarenta e sete": 47,
+  "quarenta e oito": 48,
+  "quarenta e nove": 49,
+  "cinquenta": 50,
+  "cinquenta e um": 51,
+  "cinquenta e dois": 52,
+  "cinquenta e três": 53,
+  "cinquenta e quatro": 54,
+  "cinquenta e cinco": 55,
+  "cinquenta e seis": 56,
+  "cinquenta e sete": 57,
+  "cinquenta e oito": 58,
+  "cinquenta e nove": 59,
+  "sessenta": 60,
+  "sessenta e um": 61,
+  "sessenta e dois": 62,
+  "sessenta e três": 63,
+  "sessenta e quatro": 64,
+  "sessenta e cinco": 65,
+  "sessenta e seis": 66,
+  "sessenta e sete": 67,
+  "sessenta e oito": 68,
+  "sessenta e nove": 69,
+  "setenta": 70,
+  "setenta e um": 71,
+  "setenta e dois": 72,
+  "setenta e três": 73,
+  "setenta e quatro": 74,
+  "setenta e cinco": 75,
+  "setenta e seis": 76,
+  "setenta e sete": 77,
+  "setenta e oito": 78,
+  "setenta e nove": 79,
+  "oitenta": 80,
+  "oitenta e um": 81,
+  "oitenta e dois": 82,
+  "oitenta e três": 83,
+  "oitenta e quatro": 84,
+  "oitenta e cinco": 85,
+  "oitenta e seis": 86,
+  "oitenta e sete": 87,
+  "oitenta e oito": 88,
+  "oitenta e nove": 89,
+  "noventa": 90,
+  "noventa e um": 91,
+  "noventa e dois": 92,
+  "noventa e três": 93,
+  "noventa e quatro": 94,
+  "noventa e cinco": 95,
+  "noventa e seis": 96,
+  "noventa e sete": 97,
+  "noventa e oito": 98,
+  "noventa e nove": 99,
+  "cem": 100
+};
+
+// Array com os números por extenso (deve conter os mesmos termos do mapeamento)
+// Ordenado de forma decrescente para capturar termos compostos primeiro.
+const numerosExtensoArray = [
+  "cem",
+  "noventa e nove", "noventa e oito", "noventa e sete", "noventa e seis", "noventa e cinco", "noventa e quatro", "noventa e três", "noventa e dois", "noventa e um", "noventa",
+  "oitenta e nove", "oitenta e oito", "oitenta e sete", "oitenta e seis", "oitenta e cinco", "oitenta e quatro", "oitenta e três", "oitenta e dois", "oitenta e um", "oitenta",
+  "setenta e nove", "setenta e oito", "setenta e sete", "setenta e seis", "setenta e cinco", "setenta e quatro", "setenta e três", "setenta e dois", "setenta e um", "setenta",
+  "sessenta e nove", "sessenta e oito", "sessenta e sete", "sessenta e seis", "sessenta e cinco", "sessenta e quatro", "sessenta e três", "sessenta e dois", "sessenta e um", "sessenta",
+  "cinquenta e nove", "cinquenta e oito", "cinquenta e sete", "cinquenta e seis", "cinquenta e cinco", "cinquenta e quatro", "cinquenta e três", "cinquenta e dois", "cinquenta e um", "cinquenta",
+  "quarenta e nove", "quarenta e oito", "quarenta e sete", "quarenta e seis", "quarenta e cinco", "quarenta e quatro", "quarenta e três", "quarenta e dois", "quarenta e um", "quarenta",
+  "trinta e nove", "trinta e oito", "trinta e sete", "trinta e seis", "trinta e cinco", "trinta e quatro", "trinta e três", "trinta e dois", "trinta e um", "trinta",
+  "vinte e nove", "vinte e oito", "vinte e sete", "vinte e seis", "vinte e cinco", "vinte e quatro", "vinte e três", "vinte e dois", "vinte e um", "vinte",
+  "dezenove", "dezoito", "dezessete", "dezesseis", "quinze", "quatorze", "treze", "doze", "onze",
+  "dez", "nove", "oito", "sete", "seis", "cinco", "quatro", "três", "duas", "dois", "uma", "um"
+];
+
+// Cria dinamicamente o grupo para a regex
+const numerosExtensoGroup = numerosExtensoArray.map(str => str.replace(/ /g, "\\s+")).join("|");
+
+// Função para extrair um pedido do tipo "3 filmes de ação" ou "três filmes de comédia"
+// A regex captura tanto números em dígitos quanto números escritos por extenso.
 function extrairPedido(mensagem) {
-    // Removendo conectores que possam atrapalhar (por exemplo, "e", ",")
-    const textoLimpo = mensagem.replace(/\b(e|,)\b/gi, ' ');
-    const regex = /(\d+)\s*filmes?\s*(?:de|para|d[êé])\s*(ação|comédia|drama|ficção|terror|romance|animação|suspense|musical)/i;
+    // Removendo apenas as vírgulas, mantendo os espaços
+    const textoLimpo = mensagem.replace(/,/g, ' ');
+    // Regex:
+    // - Captura opcionalmente um número em dígitos ou um número por extenso, com limites de palavra.
+    // - Em seguida, torna "filme(s)" e o conector opcional, e captura a categoria.
+    const regex = new RegExp(`\\b((-?\\d+)|(${numerosExtensoGroup}))\\b\\s*(?:filmes?\\s*)?(?:de|para|d[êé])?\\s*(ação|comédia|drama|ficção|terror|romance|animação|suspense|musical)`, "i");
     const match = textoLimpo.match(regex);
     if (match) {
-        const quantidade = parseInt(match[1], 10);
-        const categoria = match[2].toLowerCase();
+        let quantidade;
+        if (match[2]) {
+            // Se for dígito
+            quantidade = parseInt(match[2], 10);
+        } else if (match[3]) {
+            // Se for número por extenso
+            const palavra = match[3].toLowerCase();
+            quantidade = numerosPorExtenso[palavra];
+        } else {
+            // Padrão: 1
+            quantidade = 1;
+        }
+        
+        // Validação: se a quantidade for inválida (< 1)
+        if (!Number.isInteger(quantidade) || quantidade < 1) {
+            return { error: "Por favor insira um valor válido!" };
+        }
+        const categoria = match[4].toLowerCase();
         if (filmes[categoria]) {
             return { categoria, quantidade };
         }
@@ -168,9 +312,48 @@ function extrairPedido(mensagem) {
     return null;
 }
 
+function extrairPedido(mensagem) {
+    // Remove apenas as vírgulas, mantendo os espaços e o "e"
+    const textoLimpo = mensagem.replace(/,/g, ' ');
+    // Regex:
+    // - Captura opcionalmente um número em dígitos (somente dígitos, sem sinal negativo)
+    //   ou um número por extenso, com limites de palavra.
+    // - Em seguida, torna "filme(s)" e o conector opcional, e captura a categoria.
+    const regex = new RegExp(`\\b((\\d+)|(${numerosExtensoGroup}))\\b\\s*(?:filmes?\\s*)?(?:de|para|d[êé])?\\s*(ação|comédia|drama|ficção|terror|romance|animação|suspense|musical)`, "i");
+    const match = textoLimpo.match(regex);
+    if (match) {
+        let quantidade;
+        if (match[2]) {
+            // Se for dígito (já que não permitimos sinal negativo)
+            quantidade = parseInt(match[2], 10);
+        } else if (match[3]) {
+            // Se for número por extenso
+            const palavra = match[3].toLowerCase();
+            quantidade = numerosPorExtenso[palavra];
+        } else {
+            // Padrão: 1
+            quantidade = 1;
+        }
+        
+        // Validação: se a quantidade for menor que 1
+        if (!Number.isInteger(quantidade) || quantidade < 1) {
+            return { error: "por favor insira um valor válido" };
+        }
+        const categoria = match[4].toLowerCase();
+        if (filmes[categoria]) {
+            return { categoria, quantidade };
+        }
+    }
+    return null;
+}
+
+
+
 // Lista de palavras que indicam pedidos de recomendação
 const palavrasPedido = [
-    "indique", "me indique", "me dê", "me mostre", "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de", "ação", "comédia", "drama", "ficção", "terror", "romance", "animação", "suspense", "musical"
+    "agora", "mais", "outros", "outro", "indique", "me indique", "me dê", "me mostre",
+    "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de",
+    "ação", "comédia", "drama", "ficção", "terror", "romance", "animação", "suspense", "musical"
 ];
 
 // Função para detectar se a mensagem é um pedido simples (sem quantidade explícita)
@@ -247,9 +430,13 @@ app.post('/chatbot', (req, res) => {
         
         let respostaGerada = "";
         
-        // Primeiro, verifica se a mensagem contém um pedido numérico, ex: "3 filmes de ação"
+        // Primeiro, verifica se a mensagem contém um pedido numérico ou por extenso, ex: "3 filmes de ação" ou "três filmes de comédia"
         const pedido = extrairPedido(mensagem);
         if (pedido) {
+            // Se houver erro na extração, retorna a mensagem de erro
+            if (pedido.error) {
+                return res.json({ resposta: pedido.error });
+            }
             const { categoria, quantidade } = pedido;
             const respostas = gerarRespostasCategoria(idConversa, categoria, quantidade);
             respostas.forEach(resp => atualizarConversa(idConversa, resp));
