@@ -81,6 +81,62 @@ const filmes = {
         "O Abismo", "Caminho da Morte", "A Sombra do Medo", "Vozes da Morte",
         "O Labirinto Macabro", "Fúria dos Mortos", "O Despertar do Mal", "Sombras do Passado",
         "O Inominável", "A Última Chamada"
+    ],
+    romance: [
+        "Orgulho e Preconceito", "Diário de uma Paixão", "Como Eu Era Antes de Você", "Simplesmente Acontece", 
+        "Um Lugar Chamado Notting Hill", "Amor à Segunda Vista", "O Melhor de Mim", "P.S. Eu Te Amo", 
+        "Questão de Tempo", "A Culpa é das Estrelas", "Me Chame Pelo Seu Nome", "Um Amor para Recordar", 
+        "Cartas para Julieta", "Antes do Amanhecer", "Antes do Pôr do Sol", "Antes da Meia-Noite", 
+        "O Segredo de Brokeback Mountain", "500 Dias com Ela", "Adoráveis Mulheres", "Titanic", 
+        "O Lado Bom da Vida", "Amor & Outras Drogas", "A Proposta", "O Casamento do Meu Melhor Amigo", 
+        "Um Porto Seguro", "Simplesmente Amor", "O Amor Não Tira Férias", "Orgulho & Sedução", 
+        "Um Dia", "Ghost: Do Outro Lado da Vida", "Jerry Maguire: A Grande Virada", "O Guarda-Costas", 
+        "Um Senhor Estagiário", "Comer, Rezar, Amar", "Tudo e Todas as Coisas", 
+        "A Sociedade Literária e a Torta de Casca de Batata", "O Sol Também É Uma Estrela", 
+        "Retrato de uma Jovem em Chamas", "Razão e Sensibilidade", "A Casa do Lago", 
+        "O Melhor Amigo da Noiva", "Doentes de Amor", "Para Todos os Garotos que Já Amei", 
+        "Ricos de Amor", "Nasce Uma Estrela", "Querido John", "Amor à Primeira Vista", 
+        "Dois é Bom, Três é Demais", "Enquanto Você Dormia", "Afinado no Amor"
+    ],
+    animação: [
+        "Toy Story", "O Rei Leão", "Shrek", "Procurando Nemo", "Divertida Mente", "A Viagem de Chihiro", 
+        "Up - Altas Aventuras", "O Estranho Mundo de Jack", "Ratatouille", "WALL-E", "Monstros S.A.", 
+        "A Bela e a Fera", "Encanto", "Como Treinar o Seu Dragão", "Mogli: O Menino Lobo", 
+        "Meu Malvado Favorito", "O Menino e o Mundo", "Coraline e o Mundo Secreto", "Frozen", 
+        "O Serviço de Entregas da Kiki", "O Túmulo dos Vagalumes", "Princesa Mononoke", 
+        "O Castelo Animado", "Os Incríveis", "Viva - A Vida é uma Festa", "Madagascar", 
+        "Kung Fu Panda", "Luca", "Super Mario Bros: O Filme", "Elementos", "Pinóquio", 
+        "O Gigante de Ferro", "Detona Ralph", "Zootopia", "A Era do Gelo", "Os Croods", 
+        "O Pequeno Príncipe", "Uma Aventura Lego", "Tá Chovendo Hambúrguer", 
+        "Sing: Quem Canta Seus Males Espanta", "As Aventuras de Tintim", 
+        "O Lorax: Em Busca da Trúfula Perdida", "O Bom Dinossauro", "O Rei Leão (2019)", 
+        "Enrolados", "Moana", "Pets: A Vida Secreta dos Bichos", "Homem-Aranha no Aranhaverso", 
+        "Lightyear", "Bob Esponja: O Filme"
+    ],
+    suspense: [
+        "Seven: Os Sete Crimes Capitais", "O Sexto Sentido", "Iluminado", "O Silêncio dos Inocentes", 
+        "Ilha do Medo", "Clube da Luta", "Psicose", "Corra!", "Cisne Negro", "O Homem Invisível", 
+        "Pânico", "Fragmentado", "Bird Box", "O Chamado", "Um Lugar Silencioso", "Hereditário", 
+        "O Poço", "Parasita", "Mãe!", "A Órfã", "O Jogo", "O Presente", "O Sequestro do Metrô 123", 
+        "Intriga Internacional", "O Exorcista", "Prenda-me se For Capaz", "Oldboy", "Identidade", 
+        "Mistério no Mediterrâneo", "O Código Da Vinci", "Os Outros", "O Nevoeiro", "Zodíaco", 
+        "A Vila", "O Colecionador de Ossos", "O Grito", "A Chave Mestra", "O Hospedeiro", 
+        "Não! Não Olhe!", "Janela Indiscreta", "Presságio", "O Espião que Sabia Demais", 
+        "Perigo por Encomenda", "O Poço", "Telefone Preto", "As Viúvas", "Freaks", 
+        "A Garota no Trem", "Tempo", "O Pacto"
+    ],
+    musical: [
+        "O Rei do Show", "La La Land: Cantando Estações", "Mamma Mia!", "Os Miseráveis", "Grease: Nos Tempos da Brilhantina", 
+        "O Fantasma da Ópera", "Caminhos da Floresta", "Moulin Rouge!", "Chicago", "High School Musical", 
+        "A Noviça Rebelde", "Encantada", "A Bela e a Fera", "Cats", "West Side Story", "O Estranho Mundo de Jack", 
+        "Sweeney Todd: O Barbeiro Demoníaco da Rua Fleet", "Frozen", "Hairspray", "Hamilton", 
+        "Sing - Quem Canta Seus Males Espanta", "Viva - A Vida é uma Festa", "Rocketman", "Bohemian Rhapsody", 
+        "Aladdin", "O Rei Leão", "Trolls", "Burlesque", "Os Saltimbancos Trapalhões", "A Pequena Sereia", 
+        "O Mágico de Oz", "Tick, Tick... Boom!", "Mary Poppins", "Cantando na Chuva", "Dançando no Escuro", 
+        "A Escola do Rock", "Into the Woods", "Judy: Muito Além do Arco-Íris", "Amor, Sublime Amor", 
+        "A Fantástica Fábrica de Chocolate", "Descendentes", "José: O Rei dos Sonhos", "O Caminho para El Dorado", 
+        "The Rocky Horror Picture Show", "Hercules", "Os Smurfs: A Vila Perdida", "Os Muppets", "Bingo: O Rei das Manhãs", 
+        "Hair", "A Vida é uma Festa"
     ]
 };
 
@@ -100,7 +156,7 @@ function atualizarConversa(id, resposta) {
 function extrairPedido(mensagem) {
     // Removendo conectores que possam atrapalhar (por exemplo, "e", ",")
     const textoLimpo = mensagem.replace(/\b(e|,)\b/gi, ' ');
-    const regex = /(\d+)\s*filmes?\s*(?:de|para|d[êé])\s*(ação|comédia|drama|ficção|terror)/i;
+    const regex = /(\d+)\s*filmes?\s*(?:de|para|d[êé])\s*(ação|comédia|drama|ficção|terror|romance|animação|suspense|musical)/i;
     const match = textoLimpo.match(regex);
     if (match) {
         const quantidade = parseInt(match[1], 10);
@@ -114,7 +170,7 @@ function extrairPedido(mensagem) {
 
 // Lista de palavras que indicam pedidos de recomendação
 const palavrasPedido = [
-    "indique", "me indique", "me dê", "me mostre", "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de", "ação", "comédia", "drama", "ficção", "terror"
+    "indique", "me indique", "me dê", "me mostre", "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de", "ação", "comédia", "drama", "ficção", "terror", "romance", "animação", "suspense", "musical"
 ];
 
 // Função para detectar se a mensagem é um pedido simples (sem quantidade explícita)
@@ -215,20 +271,20 @@ app.post('/chatbot', (req, res) => {
         
         // Em seguida, verifica se a mensagem é uma saudação
         if (mensagem.includes("olá") || mensagem.includes("oi") || mensagem.includes("ola") || mensagem.includes("oie")) {
-            respostaGerada = "Olá! Para receber uma sugestão, informe uma categoria por vez desejada (ação, comédia, drama, ficção ou terror), ou um pedido como 'Me indique 3 filmes de ação'.";
+            respostaGerada = "Olá! Para receber uma sugestão, informe uma categoria por vez desejada (ação, comédia, drama, ficção, terror, romance, animação, suspense ou musical), ou um pedido como 'Me indique 3 filmes de ação'.";
             atualizarConversa(idConversa, respostaGerada);
             return res.json({ resposta: respostaGerada });
         }
         
         // Se mencionar "filme" ou "sugestão" sem indicar categoria
         if (mensagem.includes("filme") || mensagem.includes("sugestão")) {
-            respostaGerada = "Por favor, informe uma categoria por vez desejada (ação, comédia, drama, ficção ou terror) ou um pedido como 'Me indique 3 filmes de ação'.";
+            respostaGerada = "Por favor, informe uma categoria por vez desejada (ação, comédia, drama, ficção, terror, romance, animação, suspense ou musical) ou um pedido como 'Me indique 3 filmes de ação'.";
             atualizarConversa(idConversa, respostaGerada);
             return res.json({ resposta: respostaGerada });
         }
         
         // Caso não entenda a mensagem
-        respostaGerada = "Desculpe, não entendi sua solicitação. Informe uma categoria por vez desejada ou um pedido como 'Me indique 3 filmes de ação'.";
+        respostaGerada = "Desculpe, não entendi sua solicitação. Informe uma categoria por vez desejada (ação, comédia, drama, ficção, terror, romance, animação, suspense ou musical) ou um pedido como 'Me indique 3 filmes de ação'.";
         atualizarConversa(idConversa, respostaGerada);
         return res.json({ resposta: respostaGerada });
     } catch (error) {
