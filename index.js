@@ -114,7 +114,7 @@ function extrairPedido(mensagem) {
 
 // Lista de palavras que indicam pedidos de recomendação
 const palavrasPedido = [
-    "indique", "me indique", "me dê", "me mostre", "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de"
+    "indique", "me indique", "me dê", "me mostre", "quero ver", "quero assistir", "sugira", "dê uma sugestão", "indica", "me de", "ação", "comédia", "drama", "ficção", "terror"
 ];
 
 // Função para detectar se a mensagem é um pedido simples (sem quantidade explícita)
@@ -215,20 +215,20 @@ app.post('/chatbot', (req, res) => {
         
         // Em seguida, verifica se a mensagem é uma saudação
         if (mensagem.includes("olá") || mensagem.includes("oi") || mensagem.includes("ola") || mensagem.includes("oie")) {
-            respostaGerada = "Olá! Para receber uma sugestão, informe a categoria desejada (ação, comédia, drama, ficção ou terror), ou um pedido como 'Me indique 3 filmes de ação'.";
+            respostaGerada = "Olá! Para receber uma sugestão, informe uma categoria por vez desejada (ação, comédia, drama, ficção ou terror), ou um pedido como 'Me indique 3 filmes de ação'.";
             atualizarConversa(idConversa, respostaGerada);
             return res.json({ resposta: respostaGerada });
         }
         
         // Se mencionar "filme" ou "sugestão" sem indicar categoria
         if (mensagem.includes("filme") || mensagem.includes("sugestão")) {
-            respostaGerada = "Por favor, informe a categoria desejada (ação, comédia, drama, ficção ou terror) ou um pedido como 'Me indique 3 filmes de ação'.";
+            respostaGerada = "Por favor, informe uma categoria por vez desejada (ação, comédia, drama, ficção ou terror) ou um pedido como 'Me indique 3 filmes de ação'.";
             atualizarConversa(idConversa, respostaGerada);
             return res.json({ resposta: respostaGerada });
         }
         
         // Caso não entenda a mensagem
-        respostaGerada = "Desculpe, não entendi sua solicitação. Informe uma categoria ou um pedido como 'Me indique 3 filmes de ação'.";
+        respostaGerada = "Desculpe, não entendi sua solicitação. Informe uma categoria por vez desejada ou um pedido como 'Me indique 3 filmes de ação'.";
         atualizarConversa(idConversa, respostaGerada);
         return res.json({ resposta: respostaGerada });
     } catch (error) {
